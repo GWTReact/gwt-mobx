@@ -34,7 +34,7 @@ You can download the latest release .jar from Maven Central using the following 
 
 | Date | Version | Description |
 | :---      | :---  | :---  |
-| ?/?/2016 | 0.1.0 | Initial preview release to Maven Central   |
+| 5/18/2016 | 0.1.0 | Initial preview release to Maven Central   |
 
 ##Resources
 
