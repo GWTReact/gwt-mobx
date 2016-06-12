@@ -1,6 +1,6 @@
 package gwt.mobx.client;
 
-import gwt.react.shared.utils.Array;
+import gwt.interop.utils.shared.collections.Array;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsType;
 

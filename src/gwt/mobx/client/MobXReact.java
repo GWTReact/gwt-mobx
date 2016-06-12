@@ -15,8 +15,7 @@ public class MobXReact {
     /**
      * The observer function can be used to turn ReactJS components into reactive components. It
      * wraps the component's render function in mobx.autorun to make sure that any data that is
-     * used during the rendering of a component forces a re-rendering upon change. It is
-     * available through the separate mobx-react package.
+     * used during the rendering of a component forces a re-rendering upon change.
      *
      * <p>Tip: when observer needs to be combined with other higher-order-components, make sure
      * that observer is the innermost (first applied) function; otherwise it might do nothing
@@ -32,7 +31,7 @@ public class MobXReact {
      * The observer function can be used to turn ReactJS stateless components into reactive
      * components. It wraps the component's render function in mobx.autorun to make sure
      * that any data that is used during the rendering of a component forces a re-rendering
-     * upon change. It is available through the separate mobx-react package.
+     * upon change.
      *
      * <p>Tip: when observer needs to be combined with other higher-order-functions, make sure
      * that observer is the innermost (first applied) function; otherwise it might do nothing
@@ -41,7 +40,7 @@ public class MobXReact {
      * @param statelessComponent The stateless component to make an observer
      * @param <P> The prop type
      * @param <C> The context type
-     * @return A wrapped StatlessComponent
+     * @return A wrapped StatelessComponent
      */
     public static native <P extends BaseProps, C extends BaseContext> StatelessComponent<P, C> observer(StatelessComponent<P, C> statelessComponent);
 

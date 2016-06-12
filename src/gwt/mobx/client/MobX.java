@@ -1,8 +1,10 @@
 package gwt.mobx.client;
 
 import com.google.gwt.core.client.JavaScriptObject;
-import gwt.react.client.utils.ObjLiteral;
-import gwt.react.shared.utils.Array;
+import gwt.interop.utils.shared.functional.JsPredicate;
+import gwt.interop.utils.shared.functional.JsProcedure;
+import gwt.interop.utils.shared.collections.Array;
+import gwt.interop.utils.client.plainobjects.JsPlainObj;
 import jsinterop.annotations.JsFunction;
 import jsinterop.annotations.JsMethod;
 import jsinterop.annotations.JsPackage;
@@ -39,7 +41,7 @@ public class MobX {
      * @return An augmented version of the supplied object that will update any views that depend
      *         on it.
      */
-    public static native <O extends ObjLiteral> O observable(O objLiteral);
+    public static native <O extends JsPlainObj> O observable(O objLiteral);
 
     /**
      * Makes an Array observable. This works recursively as well, so all (future) values of the
@@ -164,7 +166,7 @@ public class MobX {
      * @param view The view callback to execute
      * @return A DisposerFunction to cancel the autorun callback
      */
-    public static native DisposerFunction autorun(JSProc view); //scope???
+    public static native DisposerFunction autorun(JsProcedure view); //scope???
 
     /**
      * Just like autorun except that the action won't be invoked synchronously but asynchronously
@@ -181,7 +183,7 @@ public class MobX {
      * @param minimumDelay The minium delay in ms to pass before the view function is invoked
      * @return A DisposerFunction to cancel the autorun callback
      */
-    public static native DisposerFunction autorunAsync(JSProc view, int minimumDelay); //scope???
+    public static native DisposerFunction autorunAsync(JsProcedure view, int minimumDelay); //scope???
 
     /**
      * creates a dynamic keyed observable map. Optionally takes an object or entries array with
@@ -202,7 +204,7 @@ public class MobX {
      * @param effect The function to call when the predicate matches
      * @return A DisposerFunction to cancel the when callback
      */
-    public static native DisposerFunction when(JSPredicate predicate, JSProc effect); //scope???
+    public static native DisposerFunction when(JsPredicate predicate, JsProcedure effect); //scope???
 
     /**
      * transaction can be used to batch a bunch of updates without notifying any observers until
@@ -213,7 +215,7 @@ public class MobX {
      *
      * @param worker The transaction worker callback
      */
-    public static native void transaction(JSProc worker);
+    public static native void transaction(JsProcedure worker);
 
     /**
      * Recursively converts an ObservableArray object to a JSON structure. Supports observable
@@ -226,7 +228,7 @@ public class MobX {
      * @param <O> The JSON literal
      * @return A JSON structure
      */
-    public static native <O extends ObjLiteral> O toJSON(ObservableArray array, boolean supportCycles);
+    public static native <O extends JsPlainObj> O toJSON(ObservableArray array, boolean supportCycles);
 
     /**
      * Recursively converts an (observable) object to a JSON structure. Supports observable
@@ -234,12 +236,12 @@ public class MobX {
      * properties won't be part of the result. Cycles are supported by default, but this
      * can be disabled to improve performance.
      *
-     * @param objLiteral    The (observable) object to convert
+     * @param jsPlainObj    The (observable) object to convert
      * @param supportCycles True to support cyclic structures
      * @param <O> The JSON literal type
      * @return A JSON structure
      */
-    public static native <O extends ObjLiteral> O toJSON(ObjLiteral objLiteral, boolean supportCycles);
+    public static native <O extends JsPlainObj> O toJSON(JsPlainObj jsPlainObj, boolean supportCycles);
 
     /**
      * Recursively converts an (observable) object to a JSON structure. Supports observable
@@ -258,7 +260,7 @@ public class MobX {
 
     public static native boolean isObservable(Object o);
     public static native boolean isObservable(Object o, String property);
-    public static native <T> T expr(JSProc expr);
+    public static native <T> T expr(JsProcedure expr);
     public static native <T> T asReference(T obj);
     public static native <T> T asStructure(T obj);
     public static native <T> T asFlat(T obj);

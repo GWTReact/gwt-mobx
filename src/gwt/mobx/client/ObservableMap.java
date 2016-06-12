@@ -1,7 +1,7 @@
 package gwt.mobx.client;
 
-import gwt.react.shared.utils.Array;
-import gwt.react.shared.utils.StringMap;
+import gwt.interop.utils.shared.collections.Array;
+import gwt.interop.utils.shared.collections.StringMap;
 import jsinterop.annotations.JsFunction;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
