@@ -67,24 +67,6 @@ public class MobX {
     public static native ObservableIntValue observableValue(int value);
 
     /**
-     * Creates an observable double value
-     *
-     * @param value The initial value
-     * @return A ObservableDoubleValue
-     */
-    @JsMethod(name = "observable")
-    public static native ObservableDoubleValue observableValue(double value);
-
-    /**
-     * Creates an observable boolean value
-     *
-     * @param value The initial value
-     * @return A ObservableBooleanValue
-     */
-    @JsMethod(name = "observable")
-    public static native ObservableBooleanValue observableValue(boolean value);
-
-    /**
      * Creates an observable value
      *
      * @param value The initial value
@@ -107,34 +89,6 @@ public class MobX {
      * @return A ComputedIntValue
      */
     public static native ComputedIntValue computed(ComputedIntExpression exprFn);
-
-    /**
-     * Use computed if you want to reactively produce a new value that can be used by other
-     * observers and autorun if you don't want to produce a new value but rather invoke some
-     * imperative code like logging, network requests etc.
-     *
-     * <p>Computed properties can be optimized away in many cases by MobX as they are assumed
-     * to be pure. So they will not be invoked when their input parameters didn't modifiy or
-     * if they are not observed by some other computed value or autorun.</p>
-     *
-     * @param exprFn A function returning the ComputedDoubleValue
-     * @return A ComputedDoubleValue
-     */
-    public static native ComputedDoubleValue computed(ComputedDoubleExpression exprFn);
-
-    /**
-     * Use computed if you want to reactively produce a new value that can be used by other
-     * observers and autorun if you don't want to produce a new value but rather invoke some
-     * imperative code like logging, network requests etc.
-     *
-     * <p>Computed properties can be optimized away in many cases by MobX as they are assumed
-     * to be pure. So they will not be invoked when their input parameters didn't modifiy or
-     * if they are not observed by some other computed value or autorun.</p>
-     *
-     * @param exprFn A function returning the ComputedBooleanValue
-     * @return A ComputedBooleanValue
-     */
-    public static native ComputedBooleanValue computed(ComputedBooleanExpression exprFn);
 
     /**
      * Use computed if you want to reactively produce a new value that can be used by other
@@ -266,64 +220,6 @@ public class MobX {
     public static native <T> T asFlat(T obj);
 
     /**
-     * An observable boolean value
-     */
-    @JsType(isNative=true, namespace = JsPackage.GLOBAL, name="ObservableValue")
-    public interface ObservableBooleanValue {
-        /**
-         * Access the boolean value
-         *
-         * @return The value as a java boolean
-         */
-        boolean get();
-
-        /**
-         * Set the value of the observable boolean.
-         *
-         * @param value The value to set
-         */
-        void set(boolean value);
-
-        /**
-         * Registers an observer function that will fire each time the stored value is replaced.
-         * Returns a function to cancel the observer
-         *
-         * @param callback The ObserveBooleanCallBack to call when the value changes
-         * @return A DisposerFunction to cancel the observer
-         */
-        DisposerFunction observe(ObserveBooleanCallBack callback);
-    }
-
-    /**
-     * An observable double value
-     */
-    @JsType(isNative=true, namespace = JsPackage.GLOBAL, name="ObservableValue")
-    public interface ObservableDoubleValue {
-        /**
-         * Access the double value
-         *
-         * @return The value as a java double
-         */
-        double get();
-
-        /**
-         * Set the value of the observable double.
-         *
-         * @param value The value to set
-         */
-        void set(double value);
-
-        /**
-         * Registers an observer function that will fire each time the stored value is replaced.
-         * Returns a function to cancel the observer
-         *
-         * @param callback The ObserveDoubleCallBack to call when the value changes
-         * @return A DisposerFunction to cancel the observer
-         */
-        DisposerFunction observe(ObserveDoubleCallBack callback);
-    }
-
-    /**
      * An observable int value
      */
     @JsType(isNative=true, namespace = JsPackage.GLOBAL, name="ObservableValue")
@@ -393,24 +289,6 @@ public class MobX {
     }
 
     /**
-     * A computed boolean value
-     */
-    @JsType(isNative = true, namespace = JsPackage.GLOBAL, name="ComputedValue")
-    public interface ComputedBooleanValue {
-        boolean get();
-
-        /**
-         * Registers an observer function that will fire each time the computed value changes.
-         * Returns a function to cancel the observer
-         *
-         * @param callback The ObserveBooleanCallBack to call when the value changes
-         * @param fireImmediately If true, the callback will fire immediatley observe is called
-         * @return A DisposerFunction to cancel the observer
-         */
-        DisposerFunction observe(ObserveBooleanCallBack callback, boolean fireImmediately);
-    }
-
-    /**
      * A computed int value
      */
     @JsType(isNative = true, namespace = JsPackage.GLOBAL, name="ComputedValue")
@@ -426,24 +304,6 @@ public class MobX {
          * @return A DisposerFunction to cancel the observer
          */
         DisposerFunction observe(ObserveIntCallBack callback, boolean fireImmediately);
-    }
-
-    /**
-     * A computed double value
-     */
-    @JsType(isNative = true, namespace = JsPackage.GLOBAL, name="ComputedValue")
-    public interface ComputedDoubleValue {
-        double get();
-
-        /**
-         * Registers an observer function that will fire each time the computed value changes.
-         * Returns a function to cancel the observer
-         *
-         * @param callback The ObserveDoubleCallBack to call when the value changes
-         * @param fireImmediately If true, the callback will fire immediatley observe is called
-         * @return A DisposerFunction to cancel the observer
-         */
-        DisposerFunction observe(ObserveDoubleCallBack callback, boolean fireImmediately);
     }
 
     /**
@@ -464,17 +324,6 @@ public class MobX {
         DisposerFunction observe(ObserveCallBack<T2> callback, boolean fireImmediately);
     }
 
-
-    @JsFunction
-    public interface ComputedBooleanExpression {
-        boolean compute();
-    }
-
-    @JsFunction
-    public interface ComputedDoubleExpression {
-        double compute();
-    }
-
     @JsFunction
     public interface ComputedExpression<T2> {
         T2 compute();
@@ -491,18 +340,8 @@ public class MobX {
     }
 
     @JsFunction
-    public interface ObserveBooleanCallBack {
-        void onChange(boolean newValue, boolean oldValue);
-    }
-
-    @JsFunction
     public interface ObserveCallBack<T> {
         void onChange(T newValue, T oldValue);
-    }
-
-    @JsFunction
-    public interface ObserveDoubleCallBack {
-        void onChange(double newValue, double oldValue);
     }
 
     @JsFunction
