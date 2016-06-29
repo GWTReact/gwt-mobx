@@ -6,8 +6,9 @@ GWT Java bindings for MobX and MobX related projects
 gwt-mobx provides Java [GWT](http://www.gwtproject.org/) bindings based on the
 new JsInterop capabilities introduced in GWT 2.8 for the following MobX related projects:
 
-* [mobx 2.1.6](https://github.com/mobxjs/mobx)
-* [mobx-react 3.1.0](https://github.com/mobxjs/mobx-react)
+* [mobx 2.3.2](https://github.com/mobxjs/mobx)
+* [mobx-react 3.3.1](https://github.com/mobxjs/mobx-react)
+* [mobx-react-devtools 4.2.0](https://github.com/mobxjs/mobx-react-devtools)
 
 This project depends on [gwt-react](https://github.com/GWTReact/gwt-react)
 
@@ -22,18 +23,19 @@ You can download the latest release .jar from Maven Central using the following 
 
 * **groupId**&nbsp;&nbsp;&nbsp; com.github.gwtreact
 * **artifactId**&nbsp;&nbsp;gwt-mobx
-* **version**&nbsp;&nbsp;&nbsp;  0.2.0
+* **version**&nbsp;&nbsp;&nbsp;  0.3.0
 
 ##Roadmap
 
 * Finish the api
-* Test developer tools
 * Provide API's for the popular add-ons
+* ~~Support developer tools~~ DONE
 
 ##Change log
 
 | Date | Version | Description |
 | :---      | :---  | :---  |
+| 6/28/2016 | 0.3.0 | Support mobx 2.3.2  |
 | 6/18/2016 | 0.2.0 | Update to use gwt-interop-utils library   |
 | 5/18/2016 | 0.1.0 | Initial preview release to Maven Central   |
 

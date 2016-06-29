@@ -1,6 +1,7 @@
 package gwt.mobx.client;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import gwt.interop.utils.shared.functional.JsConsumer;
 import gwt.interop.utils.shared.functional.JsPredicate;
 import gwt.interop.utils.shared.functional.JsProcedure;
 import gwt.interop.utils.shared.collections.Array;
@@ -36,12 +37,12 @@ public class MobX {
      * MobX will recursively pass all the supplied object literal values through observable.
      * This way the complete object (tree) is in-place instrumented to make it observable
      *
-     * @param objLiteral The object literal to make observable
-     * @param <O> A subclass of ObjLiteral
+     * @param jsPlainObj The object to make observable
+     * @param <O> A subclass of JsPlainObj
      * @return An augmented version of the supplied object that will update any views that depend
      *         on it.
      */
-    public static native <O extends JsPlainObj> O observable(O objLiteral);
+    public static native <O extends JsPlainObj> O observable(O jsPlainObj);
 
     /**
      * Makes an Array observable. This works recursively as well, so all (future) values of the
@@ -218,6 +219,35 @@ public class MobX {
     public static native <T> T asReference(T obj);
     public static native <T> T asStructure(T obj);
     public static native <T> T asFlat(T obj);
+
+    /**
+     * Enable/Disable strict mode. When enabled, all mutations to observables need to occur within
+     * in an action.
+     *
+     * @param enable enable/disable strict mode
+     */
+    public static native void useStrict(boolean enable);
+
+    /**
+     * Run the supplied block of code in an action.
+     *
+     * @param block The code to execute in the action
+     */
+    public static native void runInAction(JsProcedure block);
+
+    /**
+     * Run the supplied block of code in an action.
+     *
+     * @param name The debug name to give the action
+     * @param block The code to execute in the action
+     */
+    public static native void runInAction(String name, JsProcedure block);
+
+
+    public static native void whyRun();
+    public static native void whyRun(ComputedIntValue computed);
+    public static native void whyRun(ComputedValue computed);
+    public static native void whyRun(Object obj, String property);
 
     /**
      * An observable int value
