@@ -1,9 +1,13 @@
 package gwt.mobx.client;
 
-import gwt.react.client.components.ReactClass;
+import gwt.interop.utils.client.plainobjects.JsPlainObj;
+import gwt.react.client.components.Component;
+import gwt.react.client.components.ComponentConstructorFn;
+import gwt.react.client.components.ComponentUtils;
 import gwt.react.client.components.StatelessComponent;
 import gwt.react.client.proptypes.BaseContext;
 import gwt.react.client.proptypes.BaseProps;
+import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsType;
 
@@ -21,11 +25,16 @@ public class MobXReact {
      * that observer is the innermost (first applied) function; otherwise it might do nothing
      * at all.</p>
      *
-     * @param reactClass The react class to make an observer
+     * @param type The react Component class to make an observer
      * @param <P> The prop types
-     * @return A wrapped ReactClass
+     * @return A wrapped Component class
      */
-    public static native <P extends BaseProps> ReactClass<P> observer(ReactClass<P> reactClass);
+    @JsOverlay
+    public static <P extends BaseProps, S extends JsPlainObj, T extends Component<P, S>> ComponentConstructorFn<P> observer(Class<T> type) {
+        return observer(ComponentUtils.getCtorFn(type));
+    }
+
+    public static native <P extends BaseProps> ComponentConstructorFn<P> observer(ComponentConstructorFn<P> componentConstructorFn);
 
     /**
      * The observer function can be used to turn ReactJS stateless components into reactive
@@ -42,6 +51,6 @@ public class MobXReact {
      * @param <C> The context type
      * @return A wrapped StatelessComponent
      */
-    public static native <P extends BaseProps, C extends BaseContext> StatelessComponent<P, C> observer(StatelessComponent<P, C> statelessComponent);
+    public static native <P extends BaseProps, C extends BaseContext> StatelessComponent<P> observer(StatelessComponent<P> statelessComponent);
 
 }

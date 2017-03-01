@@ -1,7 +1,6 @@
 package gwt.mobx.client;
 
 import com.google.gwt.core.client.JavaScriptObject;
-import gwt.interop.utils.shared.functional.JsConsumer;
 import gwt.interop.utils.shared.functional.JsPredicate;
 import gwt.interop.utils.shared.functional.JsProcedure;
 import gwt.interop.utils.shared.collections.Array;
@@ -146,7 +145,7 @@ public class MobX {
      *
      * @return An ObservableMap
      */
-    public static native ObservableMap map();
+    public static native <T> ObservableMap<T> map();
 
     /**
      * when observes and runs the given predicate until it returns true. Once that happens, the
@@ -183,7 +182,7 @@ public class MobX {
      * @param <O> The JSON literal
      * @return A JSON structure
      */
-    public static native <O extends JsPlainObj> O toJSON(ObservableArray array, boolean supportCycles);
+    public static native <O extends JsPlainObj> O toJSON(ObservableArray<?> array, boolean supportCycles);
 
     /**
      * Recursively converts an (observable) object to a JSON structure. Supports observable
@@ -246,7 +245,7 @@ public class MobX {
 
     public static native void whyRun();
     public static native void whyRun(ComputedIntValue computed);
-    public static native void whyRun(ComputedValue computed);
+    public static native void whyRun(ComputedValue<?> computed);
     public static native void whyRun(Object obj, String property);
 
     /**

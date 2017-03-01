@@ -85,7 +85,7 @@ public interface ObservableMap<T> {
      *
      * @return A plain object representation of this map, suitable to transmit as JSON
      */
-    StringMap<T> toJs();
+    StringMap<T> toJS();
 
     /**
      * Registers a listener that fires upon each change in this map, similarly to the events that
