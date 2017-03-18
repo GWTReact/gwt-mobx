@@ -23,7 +23,7 @@ You can download the latest release .jar from Maven Central using the following 
 
 * **groupId**&nbsp;&nbsp;&nbsp; com.github.gwtreact
 * **artifactId**&nbsp;&nbsp;gwt-mobx
-* **version**&nbsp;&nbsp;&nbsp;  0.4.0
+* **version**&nbsp;&nbsp;&nbsp;  0.5.0
 
 ##Roadmap
 
@@ -35,6 +35,7 @@ You can download the latest release .jar from Maven Central using the following 
 
 | Date | Version | Description |
 | :---      | :---  | :---  |
+| 3/18/2017 | 0.5.0 | Refactored to use more future proof ES6 styled stateful components and added Preact support  |
 | 10/28/2016 | 0.4.0 | Support mobx 2.5.2 and GWT 2.8 final release  |
 | 6/28/2016 | 0.3.0 | Support mobx 2.3.2  |
 | 6/18/2016 | 0.2.0 | Update to use gwt-interop-utils library   |

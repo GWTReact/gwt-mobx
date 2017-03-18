@@ -6,7 +6,7 @@ apply plugin: 'signing'
 
 group = 'com.github.gwtreact'
 archivesBaseName = 'gwt-mobx'
-version = "0.4.0"
+version = "0.5.0"
 
 buildscript {
     repositories {
@@ -55,7 +55,7 @@ gwt {
 
     dependencies {
         gwt group: 'com.github.gwtreact', name: 'gwt-interop-utils', version: '0.2.+'
-        gwt group: 'com.github.gwtreact', name: 'gwt-react', version: '0.3.+'
+        gwt group: 'com.github.gwtreact', name: 'gwt-react', version: '0.5.+'
     }
 }
 
@@ -65,6 +65,7 @@ task sourcesJar(type: Jar) {
 }
 
 task myJavadocs(type: Javadoc) {
+    failOnError = false
     source = sourceSets.main.allJava
     classpath = sourceSets.main.output + sourceSets.main.compileClasspath
 }
