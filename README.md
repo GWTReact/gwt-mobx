@@ -1,6 +1,10 @@
 # gwt-mobx
 GWT Java bindings for MobX and MobX related projects
 
+#PLEASE NOTE THIS PROJECT IS NOT CURRENTLY MAINTAINED
+
+If you are interested in taking over maintenance, please file an issue and I can grant you commit permission
+
 ## Introduction
 
 gwt-mobx provides Java [GWT](http://www.gwtproject.org/) bindings based on the
@@ -16,8 +20,7 @@ This project depends on [gwt-react](https://github.com/GWTReact/gwt-react)
 
 ## Getting Started
 
-Please take a look at the mobx examples under the [gwt-react-examples](https://github.com/GWTReact/gwt-react-examples) project for
-details on how to use the library.
+Please take a look at the mobx examples under the examples directory for details on how to use the library.
 
 You can download the latest release .jar from Maven Central using the following coordinates:
 
