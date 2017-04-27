@@ -1,7 +1,7 @@
 # gwt-mobx
 GWT Java bindings for MobX and MobX related projects
 
-#PLEASE NOTE THIS PROJECT IS NOT CURRENTLY MAINTAINED
+# PLEASE NOTE THIS PROJECT IS NOT CURRENTLY MAINTAINED
 
 If you are interested in taking over maintenance, please file an issue and I can grant you commit permission
 
